@@ -464,8 +464,8 @@ footer {
 }
 
 .icon-wrapper {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin: 0 auto 15px;
     background: linear-gradient(135deg, #7b1e49, #b84f79);
     border-radius: 50%;
@@ -480,15 +480,17 @@ footer {
     color: #fff;
     font-size: 28px;
 }
-
+.abt-imgs{
+    margin-top: 30px;
+}
 .process-card h6 {
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 0;
 }
 .icon-wrapper {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     margin: 0 auto 15px;
     background: linear-gradient(135deg, #7b1e49, #b84f79);
     border-radius: 50%;
@@ -496,10 +498,15 @@ footer {
     align-items: center;
     justify-content: center;
 }
-
+.bgfz{
+    margin-bottom: 0px;
+}
+.bang{
+    margin-bottom: 30px;
+}
 .process-icon {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     filter: brightness(0) invert(1); /* makes icon white */
 }
