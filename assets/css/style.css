@@ -379,9 +379,9 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 10px 20px;
+    background: #ffffffd8;
+    color: #7b1e49;
+    padding: 7px 20px 3px 20px;
     border-radius: 8px;
 }
 .gf-img img{
