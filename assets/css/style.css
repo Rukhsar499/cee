@@ -74,7 +74,10 @@ header::before {
     position: relative;
     z-index: 2;
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: clamp(3.5rem, 8vw, 7rem);
@@ -102,7 +105,7 @@ header::before {
 }
 
 section {
-    padding: 60px 0 0px 0px;
+   
     position: relative;
 }
 .renovation-img{
@@ -123,7 +126,7 @@ section {
 }
 .case-section {
     background: linear-gradient(135deg, #f8f5f1 0%, #fff 100%);
-    padding-bottom: 50px;
+    padding: 50px 0px;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #7b1e49;
@@ -351,7 +354,7 @@ footer {
     font-size: 0.95rem;
 }
 .tile-section {
-  padding-bottom: 60px;
+  padding: 50px 0px;
   background: #f4f4f4;
 }
 .tile-section2{
@@ -494,9 +497,7 @@ footer {
     align-items: center;
     justify-content: center;
 }
-.mb{
-    margin-top: 60px;
-}
+
 .icon-wrapper i {
     color: #fff;
     font-size: 28px;
@@ -676,6 +677,7 @@ footer {
 }
 .process{
     background-color: #f3f4f3;
+    padding: 50px 0px;
 }
 @media (max-width: 992px) {
 
