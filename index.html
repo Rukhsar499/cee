@@ -16,75 +16,144 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* Container */
+        .comparison-wrapper {
+            width: 100%;
+            max-width: 900px;
+            background: #1e293b;
+            padding: 10px;
+            
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+        }
+
         .compare-container {
             position: relative;
             width: 100%;
-            height: 450px;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 30px;
+            cursor: col-resize;
+            user-select: none;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            margin: 20px 0px;
         }
 
         /* Images */
         .compare-img {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-
         }
 
         .compare-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        /* AFTER image */
+        /* BEFORE image (background) */
+        .compare-img.before {
+            z-index: 1;
+        }
+
+        /* AFTER image (foreground, clipped) */
         .compare-img.after {
-            width: 50%;
-            overflow: hidden;
+            z-index: 2;
+            clip-path: inset(0 0 0 var(--position));
         }
 
         /* Labels */
         .label {
             position: absolute;
-            top: 10px;
-            padding: 5px 15px;
-            background: rgba(0, 0, 0, 0.6);
+            top: 20px;
+            padding: 8px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #fff;
-            font-weight: bold;
-            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+           
+            border: 1px solid var(--glass-border);
+            z-index: 5;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
         .before-label {
-            right: 10px;
+            left: 20px;
+            opacity: var(--label-before-opacity, 1);
         }
 
         .after-label {
-            left: 10px;
+            right: 20px;
+            opacity: var(--label-after-opacity, 1);
         }
 
-        /* Slider */
-        .slider-line {
+        /* Slider Handle */
+        .slider-handle {
             position: absolute;
             top: 0;
-            left: 50%;
-            width: 3px;
-            height: 100%;
+            bottom: 0;
+            left: var(--position);
+            width: 4px;
             background: #fff;
-            cursor: ew-resize;
             z-index: 10;
+            transform: translateX(-50%);
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
-        .slider-line .circle {
+        .slider-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 25px;
-            height: 25px;
-            background: #fff;
+            width: 48px;
+            height: 48px;
+            background: #ffffff8c;
             border-radius: 50%;
-            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 0 8px rgba(255, 255, 255, 0.1);
+            color: #1e293b;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .compare-container:hover .slider-button {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .slider-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Visual Hint */
+        .instruction {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 640px) {
+            .compare-container {
+                aspect-ratio: 4 / 3;
+            }
+
+            .slider-button {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -113,14 +182,12 @@
                             <img src="assets/img/before.webp" alt="Before">
                             <span class="label before-label">Before</span>
                         </div>
-
                         <div class="compare-img after">
                             <img src="assets/img/after.webp" alt="After">
                             <span class="label after-label">After</span>
                         </div>
-
-                        <div class="slider-line" id="slider">
-                            <span class="circle"></span>
+                        <div class="slider-handle">
+                            <div class="slider-button"></div>
                         </div>
                     </div>
                 </div>
@@ -130,14 +197,12 @@
                             <img src="assets/img/before.webp" alt="Before">
                             <span class="label before-label">Before</span>
                         </div>
-
                         <div class="compare-img after">
                             <img src="assets/img/after.webp" alt="After">
                             <span class="label after-label">After</span>
                         </div>
-
-                        <div class="slider-line" id="slider">
-                            <span class="circle"></span>
+                        <div class="slider-handle">
+                            <div class="slider-button"></div>
                         </div>
                     </div>
                 </div>
@@ -231,7 +296,7 @@
                                     <p class="mb-2">
                                         <b>YEAR</b>: 2025
                                     </p>
-                                    <p class="mb-2">
+                                    <p class="mb-3">
                                         <b>LOCATION</b>: Kolkata, West Bengal
                                     </p>
                                 </div>
@@ -1214,30 +1279,62 @@
 
 
     <script>
-        const slider = document.getElementById("slider");
-        const container = document.querySelector(".compare-container");
-        const afterImg = document.querySelector(".compare-img.after");
+        const containers = document.querySelectorAll('.compare-container');
 
-        let isDragging = false;
+        containers.forEach(container => {
+            let isDragging = false;
 
-        slider.addEventListener("mousedown", () => isDragging = true);
-        window.addEventListener("mouseup", () => isDragging = false);
+            const updatePosition = (x) => {
+                const rect = container.getBoundingClientRect();
+                let positionPercentage = ((x - rect.left) / rect.width) * 100;
 
-        window.addEventListener("mousemove", (e) => {
-            if (!isDragging) return;
+                if (positionPercentage < 0) positionPercentage = 0;
+                if (positionPercentage > 100) positionPercentage = 100;
 
-            let rect = container.getBoundingClientRect();
-            let offsetX = e.clientX - rect.left;
+                container.style.setProperty('--position', `${positionPercentage}%`);
 
-            if (offsetX < 0) offsetX = 0;
-            if (offsetX > rect.width) offsetX = rect.width;
+                container.style.setProperty('--label-before-opacity',
+                    positionPercentage < 15 ? (positionPercentage / 15) : 1);
 
-            let percent = (offsetX / rect.width) * 100;
+                container.style.setProperty('--label-after-opacity',
+                    positionPercentage > 85 ? (1 - (positionPercentage - 85) / 15) : 1);
+            };
 
-            afterImg.style.width = percent + "%";
-            slider.style.left = percent + "%";
+            // Mouse Events
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                updatePosition(e.clientX);
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                updatePosition(e.clientX);
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            // Touch Events
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                updatePosition(e.touches[0].clientX);
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                updatePosition(e.touches[0].clientX);
+            });
+
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            // Initial position
+            container.style.setProperty('--position', '50%');
         });
     </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
