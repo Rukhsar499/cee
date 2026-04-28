@@ -14,7 +14,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Volkhov:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .compare-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+}
 
+.compare-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.compare-img img {
+    width: 100%;
+    display: block;
+}
+
+/* AFTER image on top */
+.compare-img.after {
+    width: 50%;
+    overflow: hidden;
+}
+
+/* Labels */
+.label {
+    position: absolute;
+    top: 10px;
+    padding: 5px 15px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.before-label {
+    right: 10px;
+}
+
+.after-label {
+    left: 10px;
+}
+
+/* Slider line */
+.slider-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: #fff;
+    cursor: ew-resize;
+    z-index: 10;
+}
+
+.slider-line .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #333;
+}
+  </style>
 </head>
 
 <body>
@@ -696,11 +763,32 @@
         </div>
     </section>
 
+    <section class="mb">
+        <div class="container">
+          <div class="compare-container">
+    <div class="compare-img before">
+        <img src="assets/img/before.webp" alt="Before">
+        <span class="label before-label">Before</span>
+    </div>
+
+    <div class="compare-img after">
+        <img src="assets/img/after.webp" alt="After">
+        <span class="label after-label">After</span>
+    </div>
+
+    <div class="slider-line" id="slider">
+        <span class="circle"></span>
+    </div>
+</div>
+        </div>
+    </section>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
