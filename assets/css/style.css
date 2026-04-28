@@ -371,6 +371,19 @@ footer {
 .brief{
     margin-top: 30px;
 }
+.gf-img{
+    position: relative;
+}
+.gf-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
 .gf-img img{
     margin-bottom: 20px;
 }
