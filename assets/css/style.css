@@ -140,6 +140,10 @@ section {
 .nv-link {
     color: #000;
 }
+.pr-img {
+    border: 2px dashed #7b1e49;
+    background: #000;
+}
 h2 {
     font-family: Volkhov, serif;
     font-size: 40px;
