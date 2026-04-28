@@ -53,7 +53,9 @@ h4 {
     font-size: 28px;
     margin-bottom: 0px;
 }
-
+.mb{
+    margin-bottom: 50px;
+}
 .ele {
     margin-top: 50px;
 }
@@ -121,8 +123,23 @@ section {
 }
 .case-section {
     background: linear-gradient(135deg, #f8f5f1 0%, #fff 100%);
+    padding-bottom: 50px;
 }
-
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #7b1e49;
+    color: #fff;
+}
+.nv-link {
+    background: transparent;
+    border: 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.08), 0 2px 6px rgba(128, 0, 32, 0.12), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+.nv-link {
+    color: #000;
+}
 h2 {
     font-family: Volkhov, serif;
     font-size: 40px;
