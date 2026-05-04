@@ -154,6 +154,7 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
     position: relative;
+    margin-bottom: 40px;
 }
 
 h2::after {
@@ -373,6 +374,9 @@ footer {
 }
 .rene-img{
     margin-bottom: 20px;
+}
+.renetext ul li{
+    padding-top: 10px;
 }
 .spac{
     margin-bottom: 10px;
