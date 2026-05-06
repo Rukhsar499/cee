@@ -250,11 +250,52 @@ h2::after {
     opacity: 0;
     transition: opacity 0.6s ease;
 }
+.besko .modal-body {
+    border-radius: 20px !important;
+    background: #f7f7f7;
+    padding: 20px;
+    border: none !important;
+}
 
+.besko .modal-body ul li{
+    padding-top: 10px;
+}
+.besko .modal-body ul {
+    list-style: none;
+}
+.besko .modal-body ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 4%;
+    color: #a94442;
+    font-size: 18px;
+}
+
+.btn-close {
+    background-color: #7b1e498c !important;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 10px;
+    --bs-btn-close-white-filter: none;
+}
+
+.float-end {
+    float: right !important;
+}
 .timeline.visible::before {
     opacity: 1;
 }
-
+.imh-modal img{
+    border-radius: 20px;
+}
+.modal-dialog-scrollable .modal-content {
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
 .step {
     display: flex;
     align-items: center;
