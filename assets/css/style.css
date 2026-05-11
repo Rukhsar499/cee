@@ -39,14 +39,14 @@ section[id]{
 .galler1{
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    
     cursor: pointer;
 }
 
 .galler1 img{
     width: 100%;
     transition: 0.5s ease;
-    border-radius: 20px;
+    
 }
 
 /* DARK OVERLAY */
@@ -58,7 +58,7 @@ section[id]{
     opacity: 0;
     transition: 0.5s ease;
     z-index: 1;
-    border-radius: 20px;
+    
 }
 
 /* HOVER EFFECT */
