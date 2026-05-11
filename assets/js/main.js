@@ -22,3 +22,49 @@ window.addEventListener("mousemove", (e) => {
     slider.style.left = percent + "%";
 });
 
+const navLinks = document.querySelectorAll(".nav-item");
+const navContainer = document.querySelector(".nav-links"); // Added to target the wrapper
+
+// CLICK TO SECTION
+navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+        navLinks.forEach(item => item.classList.remove("active"));
+        this.classList.add("active");
+    });
+});
+
+// ACTIVE NAV ON SCROLL
+window.addEventListener("scroll", () => {
+    let currentSection = "";
+
+    navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute("href"));
+        if (section) {
+            const sectionTop = section.offsetTop - 200;
+            const sectionHeight = section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+                currentSection = link.getAttribute("href");
+            }
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === currentSection) {
+            link.classList.add("active");
+            
+            // --- NEW LOGIC TO SHIFT NAVBAR ---
+            link.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
+            // ---------------------------------
+        }
+    });
+});
