@@ -39,8 +39,8 @@ section[id]{
 .galler1{
     position: relative;
     overflow: hidden;
-    
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .galler1 img{
