@@ -36,7 +36,44 @@ section[id]{
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     padding: 15px 0;
 }
+.galler1{
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
+.galler1 img{
+    width: 100%;
+    transition: 0.5s ease;
+    border-radius: 20px;
+}
+
+/* DARK OVERLAY */
+.galler1::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: 0.5s ease;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+/* HOVER EFFECT */
+.galler1:hover img{
+    transform: scale(1.08) rotate(2deg);
+}
+
+.galler1:hover::before{
+    opacity: 1;
+}
+
+/* OPTIONAL SHADOW */
+.galler1:hover{
+    box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+}
 .nav-links {
     display: flex;
     justify-content: center; /* Note: center might interfere with scrolling if items exceed width; consider 'flex-start' for mobile */
