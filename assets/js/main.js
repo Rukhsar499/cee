@@ -21,3 +21,4 @@ window.addEventListener("mousemove", (e) => {
     afterImg.style.width = percent + "%";
     slider.style.left = percent + "%";
 });
+
