@@ -28,6 +28,16 @@ body {
 section[id]{
     scroll-margin-top: 120px;
 }
+.footer{
+    margin-top: 50px;
+}
+ul {
+   
+    margin-bottom: 0rem;
+}
+#renovation-services{
+    padding-top: 50px;
+}
 .second-navbar {
     position: sticky;
     top: 0;
@@ -48,7 +58,9 @@ section[id]{
     transition: 0.5s ease;
     
 }
-
+.footer{
+    background-color: #222;
+}
 /* DARK OVERLAY */
 .galler1::before{
     content: "";
